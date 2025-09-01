@@ -3,7 +3,7 @@ package ar.edu.utnfc.backend;
 public class PuertoMain {
     public static void main(String[] args) {
         Puerto puerto = new Puerto();
-        puerto.cargarDesdeCSV("barcos.csv");
+        puerto.cargarDesdeCSV("c:\\Users\\juanc\\OneDrive\\Escritorio\\Apps de Escritorio\\Proyectos Facultad\\BackEnd\\Ejercicio2_POO\\src\\main\\java\\ar\\edu\\utnfc\\backend\\barcos.csv");
 
         System.out.println("Recaudación total: " + puerto.calcularRecaudacionTotal());
 

@@ -1,44 +1,40 @@
 package ar.edu.utnfc.backend;
 
-import lombok.Data;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 public class Puerto {
     private List<Barco> barcos = new ArrayList<>();
+
+    public List<Barco> getBarcos() {
+        return barcos;
+    }
 
     // 2 - Cargar desde CSV
     public void cargarDesdeCSV(String rutaArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;
-            br.readLine(); // saltar cabecera
+            br.readLine(); // Saltear encabezado
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(",");
+                String matricula = datos[0];
+                int muelle = Integer.parseInt(datos[1]);
+                double capacidadCargaToneladas = Double.parseDouble(datos[2]);
+                double costoAlquilerHora = Double.parseDouble(datos[3]);
+                String idCapitan = datos[4];
+                String nombreCapitan = datos[5];
+                String apellidoCapitan = datos[6];
+                int antiguedadCapitan = Integer.parseInt(datos[7]);
 
-                Capitan capitan = new Capitan(
-                        Integer.parseInt(datos[4]),
-                        datos[5],
-                        datos[6],
-                        Integer.parseInt(datos[7])
-                );
-
-                Barco barco = new Barco(
-                        datos[0],
-                        Integer.parseInt(datos[1]),
-                        Double.parseDouble(datos[2]),
-                        Double.parseDouble(datos[3]),
-                        capitan
-                );
-
+                Capitan capitan = new Capitan(idCapitan, nombreCapitan, apellidoCapitan, antiguedadCapitan);
+                Barco barco = new Barco(matricula, muelle, capacidadCargaToneladas, costoAlquilerHora, capitan);
                 barcos.add(barco);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error al leer el archivo: " + e.getMessage());
         }
     }
 
@@ -52,17 +48,25 @@ public class Puerto {
 
     // 4 - Barcos con capitanes con más de 18 años
     public List<Barco> barcosCapitanesConExperiencia() {
-        return barcos.stream()
-                .filter(b -> b.getCapitan().getAntiguedad() > 18)
-                .toList();
+        List<Barco> resultado = new ArrayList<>();
+        for (Barco b : barcos) {
+            if (b.getCapitan().getAntiguedad() > 18) {
+                resultado.add(b);
+            }
+        }
+        return resultado;
     }
 
     // 5 - Promedio de carga en muelles pares
     public double promedioCargaMuellesPares() {
-        return barcos.stream()
-                .filter(b -> b.getMuelle() % 2 == 0)
-                .mapToDouble(Barco::getCapacidadCargaToneladas)
-                .average()
-                .orElse(0.0);
+        double suma = 0;
+        int cantidad = 0;
+        for (Barco b : barcos) {
+            if (b.getMuelle() % 2 == 0) {
+                suma += b.getCapacidadCargaToneladas();
+                cantidad++;
+            }
+        }
+        return cantidad == 0 ? 0 : suma / cantidad;
     }
 }
