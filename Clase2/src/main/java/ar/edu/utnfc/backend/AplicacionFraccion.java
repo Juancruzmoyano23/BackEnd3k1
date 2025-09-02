@@ -1,24 +1,22 @@
-public class AplicacionFraccion
+package ar.edu.utnfc.backend;
 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-        Fraccion();
-        Fraccion f4 = f1.sumar(f2);
-        // f1 = f1.sumar(f2);
-    }
+public class AplicacionFraccion {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
 
-    public static void Fraccion() {
         Fraccion f1 = new Fraccion(1, 2);
         Fraccion f2 = new Fraccion(3, 4);
         Fraccion f3 = new Fraccion(5, 6);
+
+        Fraccion f4 = f1.sumar(f2);
+
+        mostrarFracciones(f1, f2, f3, f4);
     }
 
-    public void MostrarFracciones() {
-        System.out.println("Numerador: " + f1.toString());
-        System.out.println("Denominador: " + f2.toString());
-        System.out.println("Fraccion: " + f3.toString());
+    public static void mostrarFracciones(Fraccion f1, Fraccion f2, Fraccion f3, Fraccion f4) {
+        System.out.println("Fraccion 1: " + f1);
+        System.out.println("Fraccion 2: " + f2);
+        System.out.println("Fraccion 3: " + f3);
+        System.out.println("Fraccion 4 (suma): " + f4);
     }
-
 }

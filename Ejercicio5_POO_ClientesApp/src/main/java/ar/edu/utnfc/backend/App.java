@@ -1,20 +1,18 @@
-package ar.edu.utnfc.backend;
+package Ejercicio5_POO_ClientesApp.src.main.java.ar.edu.utnfc.backend;
 
 import java.util.ArrayList;
 import java.util.List;
-// import ar.edu.utnfc.backend.Cliente;
 import java.io.File;
 import java.util.Scanner;
 
 public class App {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
 
         // CREO EL ARREGLO CLIENTE
         List<Cliente> lista = new ArrayList<>();
 
-        String ruta = "clientes.csv";
+        String ruta = "c:\\Users\\juanc\\OneDrive\\Escritorio\\Apps de Escritorio\\Proyectos Facultad\\BackEnd\\Ejercicio5_POO_ClientesApp\\src\\main\\java\\ar\\edu\\utnfc\\backend\\clientes.csv";
 
         try (Scanner sn = new Scanner(new File(ruta))) {
             // leo la primera linea y la salteo 

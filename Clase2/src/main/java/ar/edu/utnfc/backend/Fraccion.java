@@ -1,5 +1,4 @@
-import lombok.Getter;
-import lombok.Setter;
+package ar.edu.utnfc.backend;
 
 public class Fraccion {
     

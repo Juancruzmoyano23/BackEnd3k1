@@ -1,4 +1,4 @@
-package ar.edu.utnfc.backend;
+package Ejercicio5_POO_ClientesApp.src.main.java.ar.edu.utnfc.backend;
 
 public class Cliente {
     private String nombre;

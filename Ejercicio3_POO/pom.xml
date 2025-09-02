@@ -5,25 +5,31 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ar.edu.utnfc.backend</groupId>
-  <artifactId>Ejercicio5_POO_ClientesApp</artifactId>
+  <artifactId>Ejercicio3_POO</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>Ejercicio5_POO_ClientesApp</name>
-  <description>A simple Ejercicio5_POO_ClientesApp.</description>
+  <name>Ejercicio3_POO</name>
+  <description>A simple Ejercicio3_POO.</description>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
   </properties>
 
   <dependencies>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>5.10.2</version>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
@@ -38,7 +44,6 @@
           <artifactId>maven-site-plugin</artifactId>
           <version>3.12.1</version>
         </plugin>
-        
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.6.1</version>
@@ -59,17 +64,6 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.4.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <mainClass>Ejercicio5_POO_ClientesApp.src.main.java.ar.edu.utnfc.backend</mainClass>
-              </manifest>
-            </archive>
-          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>

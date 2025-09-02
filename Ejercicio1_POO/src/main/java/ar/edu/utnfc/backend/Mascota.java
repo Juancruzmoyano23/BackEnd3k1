@@ -1,3 +1,5 @@
+package ar.edu.utnfc.backend;
+
 /*1. Ejercicio Tamagotchi
 Introducción
 Modelar e implementar en java la clase "Mascota" a partir de la cual se puedan instanciar objetos que representan una mascota virtual en una aplicación que emula este tipo de juegos.
@@ -82,7 +84,7 @@ public class Mascota {
     public boolean correr() {
         if (!puedeResponder()) return false;
 
-        energia = Math.max((energia - (int) energia* 0.35), 0); // al valor de la energia le saca el 35% de el valor actual que tenga
+        energia = (int) Math.max((energia - (int) energia* 0.35), 0); // al valor de la energia le saca el 35% de el valor actual que tenga
         humor = Math.max(humor - 2, 1);
         actividadesConsecutivas++;
         ingestasConsecutivas = 0;
@@ -94,7 +96,7 @@ public class Mascota {
     public boolean saltar() {
         if (!puedeResponder()) return false;
 
-        energia = Math.max((energia - (int) energia* 0.15), 0); // al valor de la energia le saca el 35% de el valor actual que tenga
+        energia = (int) Math.max((energia - (int) energia* 0.15), 0); // al valor de la energia le saca el 35% de el valor actual que tenga
         humor = Math.max(humor - 2, 1);
         actividadesConsecutivas++;
         ingestasConsecutivas = 0;
