@@ -11,6 +11,8 @@ El ingreso finaliza cuando el usuario ingresa -1.
 
 Si se ingresan valores fuera de rango (por ejemplo, 20 o -5), deben ignorarse mostrando un mensaje de advertencia por consola.*/
 
+package ar.edu.utnfc.backend;
+
 import java.util.Scanner;
 
 public class Ejercicio05 {

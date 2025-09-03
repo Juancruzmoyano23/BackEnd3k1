@@ -1,4 +1,4 @@
-package Ejercicio4_POO.src.main.java.ar.edu.utnfc.backend;
+package ar.edu.utnfc.backend;
 
 public class Libro {
     private String isbn;

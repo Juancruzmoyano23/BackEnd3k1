@@ -9,6 +9,8 @@ Consideraciones:
 Si el archivo no existe, mostrar un mensaje de error (Si aún no tienen claro como hacerlo, omitirlo y revisar luego la solución).
 Si alguna línea no contiene un número válido, aumentar el contador de líneas no válidas y continuar con el resto. */
 
+package ar.edu.utnfc.backend;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;

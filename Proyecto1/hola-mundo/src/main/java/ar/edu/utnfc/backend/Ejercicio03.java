@@ -4,6 +4,10 @@ Solicite al usuario un número entero positivo n.
 Muestre por pantalla todos los números entre 1 y n que sean múltiplos de 3 o múltiplos de 5, pero no de ambos.
 Si el usuario ingresa un valor no válido (≤ 0), mostrar un mensaje de error y volver a pedir el número.
 */
+
+package ar.edu.utnfc.backend;
+
+
 import java.util.Scanner;
 
 public class Ejercicio03 {

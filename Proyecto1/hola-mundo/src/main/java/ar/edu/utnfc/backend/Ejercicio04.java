@@ -16,6 +16,7 @@ Horas trabajadas
 Tareas completadas
 Índice de productividad */
 
+package ar.edu.utnfc.backend;
 
 import java.util.Scanner;
 

@@ -1,0 +1,73 @@
+public static void punto6() throws FileNotFoundException {
+       
+       //Logica lector archivo .txt
+        File file = new File("C:\\Users\\Gaspar\\Desktop\\Backend\\clase-sintaxis\\n" + //
+                        "umeros.txt");
+        //Verifica si el archivo existe y si no existe sale de la funcion.
+        //OJO es necesario hacer que tanto la funcion como el main lancen la excepcion de FileNotFoundException
+        if (!file.exists()) {
+            System.out.println("El archivo no existe.");
+            return;
+        }
+        //Creamos el objeto Scanner para leer el archivo.
+        Scanner lectorArchivo = new Scanner(file);
+       
+       //Inicializamos los contadores en 0
+        int contadorLineaNoValida = 0;
+        int contadorPar = 0;    
+        int contadorImpar = 0;
+        int sumatoriaNumeros = 0;
+        
+        //Leemos linea por linea el archivo que creamos previamente.
+        while (lectorArchivo.hasNextLine()){
+            //Separamos linea por linea el archivo
+            String linea = lectorArchivo.nextLine();
+            //Separamos la linea en elementos individuales, en este caso se usa " " (espacio) como separador ya que cada elemento
+            //esta separado por un espacio ya sea un salto de linea o un espacio entre caracteres.
+            //En caso de estar separado por comas usar "," (coma) como separador.
+            String[] numeros = linea.split(" ");
+            //Recorremos cada elemento de la linea, esta forma de hacer for se le llama "for each" y es especialmente util
+            //a la hora de recorrer arrays o listas.
+            for(String elemento : numeros){
+                //Hacemos uso de un bloque try-catch para convertir los String en Interger (Int), el bloque try-catch
+                //nos permite manejar errores de tiempo de ejecucion. Estos errores si no son manejados por nosotros
+                //haran que el programa tire error y se detenga. En este caso el error que puede tirar es
+                //NumberFormatException, que ocurre cuando intentamos convertir un String que no es un numero a Int.
+                //Si ocurre este error, el bloque catch se ejecuta.
+                try {
+                    Integer.parseInt(elemento);
+                } catch (NumberFormatException e) {
+                    //Al ocurrir el error, reconocemos la linea invalida e incrementamos el contador de lineas invalidas.
+                    contadorLineaNoValida++;
+                    //Al ser una linea invalida, usamos continue para saltarnos el resto del codigo y pasar al siguiente elemento.
+                    continue;
+                }
+                //Si el codigo llega a este punto, significa que el String era en realidad un Int por lo que lo convertimos.
+                int elementoInt = Integer.parseInt(elemento);
+                //Comprobamos si es par o impar y actualizamos los contadores correspondientes.
+                if(elementoInt%2==0){
+                    contadorPar++;
+                } else {
+                    contadorImpar++;
+                }
+                //Contamos la sumatoria de todos los numeros validos.
+                sumatoriaNumeros += elementoInt;
+            }
+        }
+        //Cerramos el lector de archivo. De todas formas de no cerrarlo, al finalizar el programa el garbage collector de java se
+        //encarga de cerrarlo por nosotros.
+        lectorArchivo.close();
+        //Reportamos los resultados.
+        System.out.println("Reporte de números:");
+        System.out.println("Cantidad de líneas no válidas: " + contadorLineaNoValida);
+        System.out.println("Cantidad de números pares: " + contadorPar);
+        System.out.println("Cantidad de números impares: " + contadorImpar);
+        //Hacemos el calculo del promedio.
+        if (contadorPar + contadorImpar > 0) {
+            double promedio = (double) sumatoriaNumeros / (contadorPar + contadorImpar);
+            System.out.println("Promedio de números: " + promedio);
+        } else {
+            System.out.println("No se ingresaron números válidos.");
+        }
+    
+    }

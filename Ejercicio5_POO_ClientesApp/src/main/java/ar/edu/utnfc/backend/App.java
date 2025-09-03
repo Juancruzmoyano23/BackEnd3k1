@@ -1,4 +1,4 @@
-package Ejercicio5_POO_ClientesApp.src.main.java.ar.edu.utnfc.backend;
+package ar.edu.utnfc.backend;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package Ejercicio3_POO.src.main.java.ar.edu.utnfc.backend;
+package ar.edu.utnfc.backend;
 
 public class CafeteraInteligente {
     private String marca;
