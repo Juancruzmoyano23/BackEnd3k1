@@ -1,6 +1,6 @@
-package main.java.ar.edu.utnfc.backend;
+package ar.edu.utnfc.backend;
 
-public abstract class Producto implements comparable<T> {
+public abstract class Producto<T> implements comparable<T> {
     
     private String codigo;
     private String desc;

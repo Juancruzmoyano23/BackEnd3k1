@@ -87,42 +87,71 @@ public class App
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
-        String ruta = "src/main/resources/viajes.csv";
+        String ruta = "src/main/java/ar/edu/utnfc/backend/viajes.csv";
         preocesarArchivo(ruta);
     }
 
     public static void preocesarArchivo(String ruta){
-        // tengo que definir los arrays por asi decirlo
         ClientesManager clienteM = new ClientesManager();
         ViajesArrays viajeA = new ViajesArrays();
 
+        int cantAereo = 0, cantTerrestre = 0, cantMaritimo = 0;
+        int totalPasajeros = 0, totalMillas = 0, totalContenedores = 0;
+        double totalCostoMaritimo5Cont = 0;
+
         try (Scanner sn = new Scanner(new File(ruta))){
-            sn.nextLine(); // Saltear la primera línea (encabezados)
+            sn.nextLine(); // Saltear encabezado
             while (sn.hasNextLine()){
                 String linea = sn.nextLine();
                 String[] datos = linea.split(";");
+
+                // distribucion de los datos
                 String codigo = datos[0];
                 int nroReserva = Integer.parseInt(datos[1]);
                 double precio = Double.parseDouble(datos[2]);
-                int tipo = Integer.parseInt(datos[3]);       
+                int tipo = Integer.parseInt(datos[3]);
+                int millasAcumuladas = Integer.parseInt(datos[4]);
+                String codAerolinea = datos[5];
                 int provinciasVisitadas = Integer.parseInt(datos[6]);
                 int cantidadPasajeros = Integer.parseInt(datos[7]);
-                int cantidadContenerdores = Integer.parseInt(datos[8]);
+                int cantidadContenedores = Integer.parseInt(datos[8]);
                 double costoPorKilo = Double.parseDouble(datos[9]);
                 double pesoTransportado = Double.parseDouble(datos[10]);
                 String nombreEmpresa = datos[11];
                 String cuit = datos[12];
 
-                // le paso a clientes lo que retorne ClientesManager
-                // Cliente cliente = ClientesManager.obtenerExistenciaCliente(cuit, nombreEmpresa);
+                Cliente cliente = clienteM.obtenerExistenciaCliente(cuit, nombreEmpresa);
 
-                // creo los viajes segun el tipo
-                // Viajes viaje = null;
-                if (tipo == 1){
-                    // Viajes viaje = new Aereo(codigo, nroReserva, precio, tipo, cliente, millasAcumuladas, codAerolinea);
+                if (tipo == 1) {
+                    Aereo aereo = new Aereo(codigo, nroReserva, precio, tipo, cliente, millasAcumuladas, codAerolinea);
+                    viajeA.agregarViajes(aereo);
+                    cantAereo++;
+                    totalMillas += millasAcumuladas;
+                } else if (tipo == 2) {
+                    Terrestre terrestre = new Terrestre(codigo, nroReserva, precio, tipo, cliente, provinciasVisitadas, cantidadPasajeros);
+                    viajeA.agregarViajes(terrestre);
+                    cantTerrestre++;
+                    totalPasajeros += cantidadPasajeros;
+                } else if (tipo == 3) {
+                    Maritimo maritimo = new Maritimo(codigo, nroReserva, precio, tipo, cliente, cantidadContenedores, costoPorKilo, pesoTransportado);
+                    viajeA.agregarViajes(maritimo);
+                    cantMaritimo++;
+                    totalContenedores += cantidadContenedores;
+                    if (cantidadContenedores >= 5) {
+                        totalCostoMaritimo5Cont += costoPorKilo * pesoTransportado;
+                    }
                 }
             }
-            
+
+            System.out.println("Cantidad única de clientes cargados: " + clienteM.cantidadClientesUnicos());
+            System.out.println("Cantidad de viajes Aéreos: " + cantAereo);
+            System.out.println("Cantidad de viajes Terrestres: " + cantTerrestre);
+            System.out.println("Cantidad de viajes Marítimos: " + cantMaritimo);
+            System.out.println("Cantidad total de pasajeros transportados: " + totalPasajeros);
+            System.out.println("Cantidad total de millas acumuladas: " + totalMillas);
+            System.out.println("Cantidad total de contenedores transportados: " + totalContenedores);
+            System.out.println("Costo acumulado total de viajes marítimos con 5 o más contenedores: " + totalCostoMaritimo5Cont);
+
         } catch (Exception e) {
             System.out.println("Error al procesar el archivo: " + e.getMessage());
         }

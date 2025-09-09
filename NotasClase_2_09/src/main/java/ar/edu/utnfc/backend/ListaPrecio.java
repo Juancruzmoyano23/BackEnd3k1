@@ -1,4 +1,7 @@
-package main.java.ar.edu.utnfc.backend;
+package ar.edu.utnfc.backend;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 @Data
 @AllArgsConstructor

@@ -1,7 +1,5 @@
-package main.java.ar.edu.utnfc.backend;
+package ar.edu.utnfc.backend;
 
-@Data
-@AllArgsConstructor
 public class MuroSeco extends Producto {
     private boolean perfilAcero;
     private double metros;
@@ -12,12 +10,26 @@ public class MuroSeco extends Producto {
         this.metros = metros;
     }
 
+    public boolean isPerfilAcero() {
+        return perfilAcero;
+    }
+
+    public void setPerfilAcero(boolean perfilAcero) {
+        this.perfilAcero = perfilAcero;
+    }
+
+    public double getMetros() {
+        return metros;
+    }
+
+    public void setMetros(double metros) {
+        this.metros = metros;
+    }
 
     @Override
     public double importarPrecio() {
-        return 0;// ListaPrecio();
+        return 0; // ListaPrecio();
     }
-    
 
     @Override
     public int compareTo(Producto o) {
