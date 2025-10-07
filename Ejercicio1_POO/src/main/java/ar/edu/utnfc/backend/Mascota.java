@@ -106,7 +106,7 @@ public class Mascota {
     }
 
     // Otros comportamientos
-    public boolean dormir() {
+    public boolean dormir() { //dormir => la mascota pasa a estado durmiendo y no responde a ningún otro comportamiento excepto despertar. Además la energía se incrementa en 25 unidades y el humor en 2 niveles.
         if (!puedeResponder()) return false;
 
         boolean durmiendo = true;

@@ -12,7 +12,7 @@ public class App {
         // CREO EL ARREGLO CLIENTE
         List<Cliente> lista = new ArrayList<>();
 
-        String ruta = "c:\\Users\\juanc\\OneDrive\\Escritorio\\Apps de Escritorio\\Proyectos Facultad\\BackEnd\\Ejercicio5_POO_ClientesApp\\src\\main\\java\\ar\\edu\\utnfc\\backend\\clientes.csv";
+        String ruta = "src\\main\\java\\ar\\edu\\utnfc\\backend\\clientes.csv";
 
         try (Scanner sn = new Scanner(new File(ruta))) {
             // leo la primera linea y la salteo 
@@ -24,7 +24,6 @@ public class App {
             while (sn.hasNextLine()) {
                 String linea = sn.nextLine();
                 String[] datos = linea.split(",");
-
                 // Crear objeto Cliente
                 Cliente cliente = new Cliente(
                     datos[0], // nombre

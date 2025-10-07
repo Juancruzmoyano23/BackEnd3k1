@@ -37,9 +37,9 @@ public class Ejercicio02 {
         if (limpio.length() != 10) return false;
         int suma = 0;
         for (int i = 0; i < 10; i++) {
-            char c = limpio.charAt(i);
+            char c = limpio.charAt(i); 
             int valor;
-            if (i == 9 && (c == 'X' || c == 'x')) {
+            if (i == 9 && (c == 10)) {
                 valor = 10; // El último dígito puede ser 'X'
             } else if (Character.isDigit(c)) {
                 valor = c - '0';

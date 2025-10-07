@@ -102,7 +102,7 @@ public class App
         try (Scanner sn = new Scanner(new File(ruta))){
             sn.nextLine(); // Saltear encabezado
             while (sn.hasNextLine()){
-                String linea = sn.nextLine();
+                String linea = sn.nextLine(); // guzman; juan 25, Cordoba
                 String[] datos = linea.split(";");
 
                 // distribucion de los datos

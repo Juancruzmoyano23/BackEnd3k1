@@ -22,7 +22,7 @@ public class Ejercicio06 {
 
         try (Scanner sc = new Scanner(new File(archivo))) {
             while (sc.hasNextLine()) {
-                String linea = sc.nextLine().trim();
+                String linea = sc.nextLine();
                 try {
                     int num = Integer.parseInt(linea);
                     totalNumeros++;
@@ -35,6 +35,7 @@ public class Ejercicio06 {
                 } catch (NumberFormatException e) {
                     lineasInvalidas++;
                 }
+
             }
         } catch (FileNotFoundException e) {
             System.out.println("Error al leer el archivo: " + archivo);

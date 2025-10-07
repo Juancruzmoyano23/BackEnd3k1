@@ -57,7 +57,7 @@ public class CafeteraInteligente {
         return false;
     }
 
-    @Override
+    @Override 
     public String toString() {
         return "Cafetera " + marca + " " + modelo +
                 " - Agua: " + contenidoActual + "ml, Temperatura: " + temperatura + "°C, Servidos: " +
