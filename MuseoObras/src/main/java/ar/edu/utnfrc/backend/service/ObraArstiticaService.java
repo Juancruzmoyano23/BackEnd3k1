@@ -144,7 +144,10 @@ public void bulkInsert(File fileToImport) throws IOException { // método públi
 
     public List<ObraArtistica> getObrasByNombreMuseo(String nombreMuseo) {
         return obraArtisticaRepository.getAll().stream()
-                .filter(o -> o.getMuseo() != null && nombreMuseo.equalsIgnoreCase(o.getMuseo().getNombre()))
+                .filter(o -> o != null
+                    && o.getMuseo() != null
+                    && o.getMuseo().getNombre() != null
+                    && nombreMuseo.equalsIgnoreCase(o.getMuseo().getNombre().trim()))
                 .collect(Collectors.toList());
     }
 }

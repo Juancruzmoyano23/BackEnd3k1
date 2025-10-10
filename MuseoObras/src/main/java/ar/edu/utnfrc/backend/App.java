@@ -82,9 +82,7 @@ public class App {
                 try {
                     List<ObraArtistica> obras = obraArtisticaService.getObrasByNombreMuseo(museoNombre);
                     if (obras == null || obras.isEmpty()) {
-                        for (ObraArtistica o : obras) {
-                            System.out.println(o);
-                        }
+                        System.out.println("No se encontraron obras para el museo: " + museoNombre);
                         return;
                     }
                     System.out.printf("|%20s|%20s|%n",  "Autor", "Estilo");
